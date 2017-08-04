@@ -6,4 +6,8 @@ public class Cell {
     public boolean alive() {
         return living;
     }
+
+    public void die() {
+        living = false;
+    }
 }
