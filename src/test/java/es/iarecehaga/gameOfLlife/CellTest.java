@@ -22,4 +22,12 @@ public class CellTest {
 
         assertFalse(cell.alive());
     }
+
+    @Test(expected = CellAlreadyKilledException.class)
+    public void cannotKillTwiceACell() {
+        Cell cell = new Cell();
+
+        cell.die();
+        cell.die();
+    }
 }

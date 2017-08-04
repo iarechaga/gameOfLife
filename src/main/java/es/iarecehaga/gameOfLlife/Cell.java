@@ -8,6 +8,9 @@ public class Cell {
     }
 
     public void die() {
+        if (!alive()) {
+            throw new CellAlreadyKilledException();
+        }
         living = false;
     }
 }
