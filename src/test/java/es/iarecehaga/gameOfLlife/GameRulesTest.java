@@ -2,7 +2,8 @@ package es.iarecehaga.gameOfLlife;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
+import java.util.stream.IntStream;
+
 import static org.junit.Assert.assertTrue;
 
 public class GameRulesTest {
@@ -10,24 +11,35 @@ public class GameRulesTest {
 
     @Test
     public void shouldDieWithFewNeighbours() {
-        assertTrue(gameRules.shouldDie(0));
-        assertTrue(gameRules.shouldDie(1));
+        IntStream tooManyNeighboursOptions = IntStream.range(0, 1);
+
+        assertTrue(
+                tooManyNeighboursOptions.allMatch(
+                        neighbourAmount -> gameRules.shouldDie(neighbourAmount)
+                )
+        );
     }
 
     @Test
     public void shouldDieWithTooManyNeighbours() {
-        assertTrue(gameRules.shouldDie(4));
-        assertTrue(gameRules.shouldDie(5));
-        assertTrue(gameRules.shouldDie(6));
-        assertTrue(gameRules.shouldDie(7));
-        assertTrue(gameRules.shouldDie(8));
-        assertTrue(gameRules.shouldDie(9));
+        IntStream tooManyNeighboursOptions = IntStream.range(4, 9);
+
+        assertTrue(
+                tooManyNeighboursOptions.allMatch(
+                        neighbourAmount -> gameRules.shouldDie(neighbourAmount)
+                )
+        );
     }
 
     @Test
     public void cellSurvivesWithTwoOrThreeNeighbours() {
-        assertFalse(gameRules.shouldDie(2));
-        assertFalse(gameRules.shouldDie(3));
+        IntStream tooManyNeighboursOptions = IntStream.range(2, 3);
+
+        assertTrue(
+                tooManyNeighboursOptions.noneMatch(
+                        neighbourAmount -> gameRules.shouldDie(neighbourAmount)
+                )
+        );
     }
 
 }
