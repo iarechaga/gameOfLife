@@ -6,8 +6,8 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertTrue;
 
-public class GameRulesTest {
-    private GameRules gameRules = new GameRules();;
+public class LivingCellGameRulesTest {
+    private LivingCellGameRules livingCellGameRules = new LivingCellGameRules();;
 
     @Test
     public void shouldDieWithFewNeighbours() {
@@ -15,7 +15,7 @@ public class GameRulesTest {
 
         assertTrue(
                 tooManyNeighboursOptions.allMatch(
-                        neighbourAmount -> gameRules.shouldDie(neighbourAmount)
+                        neighbourAmount -> livingCellGameRules.cellShouldDie(neighbourAmount)
                 )
         );
     }
@@ -26,7 +26,7 @@ public class GameRulesTest {
 
         assertTrue(
                 tooManyNeighboursOptions.allMatch(
-                        neighbourAmount -> gameRules.shouldDie(neighbourAmount)
+                        neighbourAmount -> livingCellGameRules.cellShouldDie(neighbourAmount)
                 )
         );
     }
@@ -37,7 +37,7 @@ public class GameRulesTest {
 
         assertTrue(
                 tooManyNeighboursOptions.noneMatch(
-                        neighbourAmount -> gameRules.shouldDie(neighbourAmount)
+                        neighbourAmount -> livingCellGameRules.cellShouldDie(neighbourAmount)
                 )
         );
     }
