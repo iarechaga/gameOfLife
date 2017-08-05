@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 import static org.junit.Assert.assertTrue;
 
 public class LivingCellGameRulesTest {
-    private LivingCellGameRules livingCellGameRules = new LivingCellGameRules();;
+    private LivingCellGameRules livingCellGameRules = new LivingCellGameRules();
 
     @Test
     public void shouldDieWithFewNeighbours() {
