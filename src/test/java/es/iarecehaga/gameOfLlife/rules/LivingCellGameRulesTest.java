@@ -15,7 +15,7 @@ public class LivingCellGameRulesTest {
 
         assertTrue(
                 tooManyNeighboursOptions.allMatch(
-                        neighbourAmount -> livingCellGameRules.cellShouldDie(neighbourAmount)
+                        neighbourAmount -> livingCellGameRules.shouldDie(neighbourAmount)
                 )
         );
     }
@@ -26,7 +26,7 @@ public class LivingCellGameRulesTest {
 
         assertTrue(
                 tooManyNeighboursOptions.allMatch(
-                        neighbourAmount -> livingCellGameRules.cellShouldDie(neighbourAmount)
+                        neighbourAmount -> livingCellGameRules.shouldDie(neighbourAmount)
                 )
         );
     }
@@ -37,7 +37,7 @@ public class LivingCellGameRulesTest {
 
         assertTrue(
                 tooManyNeighboursOptions.noneMatch(
-                        neighbourAmount -> livingCellGameRules.cellShouldDie(neighbourAmount)
+                        neighbourAmount -> livingCellGameRules.shouldDie(neighbourAmount)
                 )
         );
     }
