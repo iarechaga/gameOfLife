@@ -1,4 +1,4 @@
-package es.iarecehaga.gameOfLlife;
+package es.iarecehaga.gameOfLlife.cell;
 
 import org.junit.Test;
 

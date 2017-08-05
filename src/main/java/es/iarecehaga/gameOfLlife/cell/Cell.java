@@ -1,16 +1,18 @@
-package es.iarecehaga.gameOfLlife;
+package es.iarecehaga.gameOfLlife.cell;
 
 public class Cell {
-    private boolean living = true;
+    public static final Cell NULL = new NullCell();
+
+    private boolean alive = true;
 
     public boolean alive() {
-        return living;
+        return alive;
     }
 
     public void die() {
         if (!alive()) {
             throw new CellAlreadyKilledException();
         }
-        living = false;
+        alive = false;
     }
 }
