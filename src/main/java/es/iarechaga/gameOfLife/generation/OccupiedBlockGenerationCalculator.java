@@ -6,12 +6,12 @@ import es.iarechaga.gameOfLife.storage.SquaredPetriDish;
 
 import java.util.List;
 
-class CellGenerationCalculator {
+class OccupiedBlockGenerationCalculator {
 
-    private final NeighbourCounter counter;
+    private final NeighbourLivingCellsCounter counter;
     private final LivingCellGameRules cellGameRules;
 
-    public CellGenerationCalculator(final NeighbourCounter counter, final LivingCellGameRules cellGameRules) {
+    public OccupiedBlockGenerationCalculator(final NeighbourLivingCellsCounter counter, final LivingCellGameRules cellGameRules) {
         this.counter = counter;
         this.cellGameRules = cellGameRules;
     }

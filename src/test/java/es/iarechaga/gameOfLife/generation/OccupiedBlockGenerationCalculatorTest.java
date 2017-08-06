@@ -20,22 +20,22 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CellGenerationCalculatorTest {
+public class OccupiedBlockGenerationCalculatorTest {
 
     @Mock
     private SquaredPetriDish petriDish;
 
     @Mock
-    private NeighbourCounter counter;
+    private NeighbourLivingCellsCounter counter;
     @Mock
     private LivingCellGameRules cellGameRules;
 
     @InjectMocks
-    private CellGenerationCalculator cellGenerationCalculator;
+    private OccupiedBlockGenerationCalculator occupiedBlockGenerationCalculator;
 
     @Test
     public void shouldRetrieveCells() {
-        cellGenerationCalculator.evolve(petriDish);
+        occupiedBlockGenerationCalculator.evolve(petriDish);
 
         verify(petriDish).getOccupiedCells();
     }
@@ -52,7 +52,7 @@ public class CellGenerationCalculatorTest {
         when(counter.count(cellToDieNeighbours)).thenReturn(someAmount);
         when(cellGameRules.shouldDie(someAmount)).thenReturn(Boolean.TRUE);
 
-        cellGenerationCalculator.evolve(petriDish);
+        occupiedBlockGenerationCalculator.evolve(petriDish);
 
         InOrder desiredSequence = inOrder(petriDish, counter, cellGameRules, cellToDie);
         desiredSequence.verify(petriDish).getOccupiedCells();
@@ -75,7 +75,7 @@ public class CellGenerationCalculatorTest {
         when(counter.count(cellToDieNeighbours)).thenReturn(someAmount);
         when(cellGameRules.shouldDie(someAmount)).thenReturn(Boolean.FALSE);
 
-        cellGenerationCalculator.evolve(petriDish);
+        occupiedBlockGenerationCalculator.evolve(petriDish);
 
         InOrder desiredSequence = inOrder(petriDish, counter, cellGameRules, cellToLive);
         desiredSequence.verify(petriDish).getOccupiedCells();
