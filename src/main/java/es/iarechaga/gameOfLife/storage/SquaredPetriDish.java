@@ -88,6 +88,6 @@ public class SquaredPetriDish {
     }
 
     private boolean outOfBounds(final Integer position) {
-        return position >= size || position < 0;
+        return position > size || position < 0;
     }
 }
