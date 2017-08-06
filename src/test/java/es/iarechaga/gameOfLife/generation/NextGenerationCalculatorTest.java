@@ -15,7 +15,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class NextGenerationCalculatorTest {
     @Mock
-    private CellGenerationCalculator cellGenerationCalculator;
+    private OccupiedBlockGenerationCalculator occupiedBlockGenerationCalculator;
     @Mock
     private EmptyBlockGenerationCalculator emptyBlockGenerationCalculator;
     @InjectMocks
@@ -27,8 +27,8 @@ public class NextGenerationCalculatorTest {
 
         nextGenerationCalculator.evolve(petriDish);
 
-        InOrder inOrder = inOrder(cellGenerationCalculator, emptyBlockGenerationCalculator);
-        inOrder.verify(cellGenerationCalculator).evolve(petriDish);
+        InOrder inOrder = inOrder(occupiedBlockGenerationCalculator, emptyBlockGenerationCalculator);
+        inOrder.verify(occupiedBlockGenerationCalculator).evolve(petriDish);
         inOrder.verify(emptyBlockGenerationCalculator).evolve(petriDish);
     }
 

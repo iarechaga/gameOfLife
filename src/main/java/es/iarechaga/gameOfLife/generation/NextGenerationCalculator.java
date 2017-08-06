@@ -4,17 +4,17 @@ import es.iarechaga.gameOfLife.storage.SquaredPetriDish;
 
 public class NextGenerationCalculator {
 
-    private final CellGenerationCalculator cellGenerationCalculator;
+    private final OccupiedBlockGenerationCalculator occupiedBlockGenerationCalculator;
     private final EmptyBlockGenerationCalculator emptyBlockGenerationCalculator;
 
-    public NextGenerationCalculator(final CellGenerationCalculator cellGenerationCalculator,
+    public NextGenerationCalculator(final OccupiedBlockGenerationCalculator occupiedBlockGenerationCalculator,
                                     final EmptyBlockGenerationCalculator emptyBlockGenerationCalculator) {
-        this.cellGenerationCalculator = cellGenerationCalculator;
+        this.occupiedBlockGenerationCalculator = occupiedBlockGenerationCalculator;
         this.emptyBlockGenerationCalculator = emptyBlockGenerationCalculator;
     }
 
     public void evolve(final SquaredPetriDish petriDish) {
-        cellGenerationCalculator.evolve(petriDish);
+        occupiedBlockGenerationCalculator.evolve(petriDish);
         emptyBlockGenerationCalculator.evolve(petriDish);
         petriDish.cleanDeadCells();
     }
