@@ -4,7 +4,13 @@ import es.iarechaga.gameOfLife.storage.InvalidUsageOfNullException;
 
 class NullCell extends Cell {
 
-    NullCell() {
+    private static final NullCell NULL_CELL = new NullCell();
+
+    static Cell getInstance() {
+        return NULL_CELL;
+    }
+
+    private NullCell() {
     }
 
     @Override

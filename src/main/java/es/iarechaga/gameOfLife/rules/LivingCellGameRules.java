@@ -1,5 +1,8 @@
 package es.iarechaga.gameOfLife.rules;
 
+import javax.inject.Named;
+
+@Named
 public class LivingCellGameRules {
 
     private static final int FEW_CELLS_LIMIT = 2;

@@ -5,8 +5,10 @@ import es.iarechaga.gameOfLife.rules.EmptyBlockGameRules;
 import es.iarechaga.gameOfLife.storage.CellBlock;
 import es.iarechaga.gameOfLife.storage.SquaredPetriDish;
 
+import javax.inject.Named;
 import java.util.List;
 
+@Named
 class EmptyBlockGenerationCalculator {
 
     private final EmptyBlockGameRules gameRules;

@@ -1,7 +1,7 @@
 package es.iarechaga.gameOfLife.cell;
 
 public class Cell {
-    public static final Cell NULL = new NullCell();
+    public static final Cell NULL = NullCell.getInstance();
 
     private boolean alive = true;
 
