@@ -18,11 +18,11 @@ public class Game {
         this.nextGenerationCalculator = nextGenerationCalculator;
     }
 
-    public void nextGeneration() {
+    void nextGeneration() {
         nextGenerationCalculator.evolve(petriDish);
     }
 
-    public SquaredPetriDish getPetriDish() {
+    SquaredPetriDish getPetriDish() {
         return petriDish;
     }
 }
