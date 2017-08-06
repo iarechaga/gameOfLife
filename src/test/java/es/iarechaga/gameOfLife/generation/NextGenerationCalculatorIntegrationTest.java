@@ -27,6 +27,7 @@ public class NextGenerationCalculatorIntegrationTest {
     public void nextGenerationMiniExploder() {
         final SquaredPetriDish petriDish = new SquaredPetriDish(10);
         petriDish.addAll(buildMiniExploder());
+
         nextGenerationCalculator.evolve(petriDish);
 
         assertTrue(petriDish.getOccupiedCells().containsAll(buildFirstMiniExploderIteration()));
