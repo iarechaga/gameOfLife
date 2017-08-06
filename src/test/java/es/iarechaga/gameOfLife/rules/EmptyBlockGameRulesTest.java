@@ -11,7 +11,7 @@ public class EmptyBlockGameRulesTest {
 
     @Test
     public void shouldRemainEmptyWithFewNeighbours() {
-        IntStream fewNeighbours = IntStream.range(0, 2);
+        IntStream fewNeighbours = IntStream.range(0, 3);
 
         assertTrue(
                 fewNeighbours.noneMatch(
@@ -22,7 +22,7 @@ public class EmptyBlockGameRulesTest {
 
     @Test
     public void shouldBecomePopulatedWithEnoughNeighbours() {
-        IntStream fewNeighbours = IntStream.range(3, 9);
+        IntStream fewNeighbours = IntStream.range(3, 10);
 
         assertTrue(
                 fewNeighbours.allMatch(

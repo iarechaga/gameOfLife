@@ -28,8 +28,12 @@ public class CellBlock {
         return y;
     }
 
-    public boolean containsCell() {
+    public Boolean containsCell() {
         return !Cell.NULL.equals(content);
+    }
+
+    public boolean containsLivingCell() {
+        return containsCell() && content.alive();
     }
 
     public void kill() {
@@ -44,6 +48,6 @@ public class CellBlock {
         CellBlock that = (CellBlock) obj;
         return this.getX().equals(that.getX())
                && this.getY().equals(that.getY())
-               && this.containsCell() && that.containsCell();
+               && this.containsCell().equals(that.containsCell());
     }
 }

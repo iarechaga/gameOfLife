@@ -11,7 +11,7 @@ public class LivingCellGameRulesTest {
 
     @Test
     public void shouldDieWithFewNeighbours() {
-        IntStream tooManyNeighboursOptions = IntStream.range(0, 1);
+        IntStream tooManyNeighboursOptions = IntStream.range(0, 2);
 
         assertTrue(
                 tooManyNeighboursOptions.allMatch(
@@ -22,7 +22,7 @@ public class LivingCellGameRulesTest {
 
     @Test
     public void shouldDieWithTooManyNeighbours() {
-        IntStream tooManyNeighboursOptions = IntStream.range(4, 9);
+        IntStream tooManyNeighboursOptions = IntStream.range(4, 10);
 
         assertTrue(
                 tooManyNeighboursOptions.allMatch(
@@ -33,7 +33,7 @@ public class LivingCellGameRulesTest {
 
     @Test
     public void cellSurvivesWithTwoOrThreeNeighbours() {
-        IntStream tooManyNeighboursOptions = IntStream.range(2, 3);
+        IntStream tooManyNeighboursOptions = IntStream.range(2, 4);
 
         assertTrue(
                 tooManyNeighboursOptions.noneMatch(

@@ -9,7 +9,7 @@ class NullCell extends Cell {
 
     @Override
     public boolean alive() {
-        throw new InvalidUsageOfNullException("Trying to check if a null cell is alive");
+       return false;
     }
 
     @Override
