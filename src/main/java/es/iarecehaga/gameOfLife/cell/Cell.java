@@ -1,4 +1,4 @@
-package es.iarecehaga.gameOfLlife.cell;
+package es.iarecehaga.gameOfLife.cell;
 
 public class Cell {
     public static final Cell NULL = new NullCell();

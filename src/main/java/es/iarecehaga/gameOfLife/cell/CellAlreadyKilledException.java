@@ -1,4 +1,4 @@
-package es.iarecehaga.gameOfLlife.cell;
+package es.iarecehaga.gameOfLife.cell;
 
 class CellAlreadyKilledException extends RuntimeException {
 

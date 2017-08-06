@@ -1,4 +1,4 @@
-package es.iarecehaga.gameOfLlife.rules;
+package es.iarecehaga.gameOfLife.rules;
 
 public class LivingCellGameRules {
 

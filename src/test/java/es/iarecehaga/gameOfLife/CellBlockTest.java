@@ -1,6 +1,6 @@
-package es.iarecehaga.gameOfLlife;
+package es.iarecehaga.gameOfLife;
 
-import es.iarecehaga.gameOfLlife.cell.Cell;
+import es.iarecehaga.gameOfLife.cell.Cell;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

@@ -1,6 +1,6 @@
-package es.iarecehaga.gameOfLlife.cell;
+package es.iarecehaga.gameOfLife.cell;
 
-import es.iarecehaga.gameOfLlife.InvalidUsageOfNullException;
+import es.iarecehaga.gameOfLife.InvalidUsageOfNullException;
 
 class NullCell extends Cell {
 
