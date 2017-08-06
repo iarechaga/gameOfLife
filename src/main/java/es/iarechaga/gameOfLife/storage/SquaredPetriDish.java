@@ -26,6 +26,10 @@ public class SquaredPetriDish {
         cellStorage.putIfAbsent(cellBlock.getX(), blocksRow);
     }
 
+    public Integer getRange() {
+        return size;
+    }
+
     public CellBlock getCell(final int row, final int column) {
         return cellStorage.getOrDefault(row, new TreeMap<>())
                           .getOrDefault(column, new CellBlock(row, column));
