@@ -31,4 +31,19 @@ public class CellBlock {
     public boolean containsCell() {
         return !Cell.NULL.equals(content);
     }
+
+    public void kill() {
+        content.die();
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (!(obj instanceof CellBlock)) {
+            return false;
+        }
+        CellBlock that = (CellBlock) obj;
+        return this.getX().equals(that.getX())
+               && this.getY().equals(that.getY())
+               && this.containsCell() && that.containsCell();
+    }
 }
