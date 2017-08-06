@@ -12,7 +12,7 @@ public class SquaredPetriDish {
     }
 
     public void add(final CellBlock cellBlock) {
-        if (outOfLimits(cellBlock)) {
+        if (outOfBounds(cellBlock)) {
             throw new BlockOutOfLimitsException(String.format("Trying to access %d,%d with limit of %d", cellBlock.getX(), cellBlock.getY(), size));
         }
         Map<Integer, CellBlock> blocksRow = cellStorage.getOrDefault(cellBlock.getX(), new TreeMap<>());
@@ -26,7 +26,11 @@ public class SquaredPetriDish {
                           .getOrDefault(y, new CellBlock(x, y));
     }
 
-    private boolean outOfLimits(final CellBlock cellBlock) {
-        return cellBlock.getX() >= size || cellBlock.getY() >= size;
+    private boolean outOfBounds(final CellBlock cellBlock) {
+        return outOfBounds(cellBlock.getX()) || outOfBounds(cellBlock.getY());
+    }
+
+    private boolean outOfBounds(final Integer position) {
+        return position >= size || position < 0;
     }
 }
