@@ -1,6 +1,6 @@
-package es.iarecehaga.gameOfLife;
+package es.iarechaga.gameOfLife.storage;
 
-import es.iarecehaga.gameOfLife.cell.Cell;
+import es.iarechaga.gameOfLife.cell.Cell;
 
 public class CellBlock {
 

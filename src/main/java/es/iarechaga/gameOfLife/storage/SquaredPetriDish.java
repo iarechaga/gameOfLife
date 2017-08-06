@@ -1,4 +1,4 @@
-package es.iarecehaga.gameOfLife;
+package es.iarechaga.gameOfLife.storage;
 
 import java.util.Map;
 import java.util.TreeMap;
