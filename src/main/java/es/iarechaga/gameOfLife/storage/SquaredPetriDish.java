@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class SquaredPetriDish {
     private final Integer size;
-    private Map<Integer, Map<Integer, CellBlock>> cellStorage = new TreeMap<>();
+    private final Map<Integer, Map<Integer, CellBlock>> cellStorage = new TreeMap<>();
 
     public SquaredPetriDish(final Integer size) {
         this.size = size;
