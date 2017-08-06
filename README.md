@@ -1,4 +1,4 @@
-Writen by Ignacio Arechaga Fernandez, August 6th 2017
+Written by Ignacio Arechaga Fernandez, August 6th 2017
 
 My own interpretation of John Conway´s Game of Life.
 
