@@ -34,4 +34,11 @@ public class CellBlockTest {
         assertThat(cellBlock.getX(), is(COORDINATE_X));
         assertThat(cellBlock.getY(), is(COORDINATE_Y));
     }
+
+    @Test(expected = InvalidUsageOfNullException.class)
+    public void cannotKillEmptyBlockCell() {
+        CellBlock cellBlock = new CellBlock(0,0);
+
+        cellBlock.kill();
+    }
 }
