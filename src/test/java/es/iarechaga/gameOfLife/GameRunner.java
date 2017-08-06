@@ -23,7 +23,6 @@ public class GameRunner {
     @Inject
     private LivingCellBlockGenerator randomCellGenerator;
 
-    // Remove comment to be able to start the application
     @Test
     public void runTheGame() throws InterruptedException {
         initGame();
