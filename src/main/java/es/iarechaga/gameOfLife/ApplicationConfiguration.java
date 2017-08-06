@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "es.iarechaga.gameOfLife")
-public class ConfigurationContext {
+public class ApplicationConfiguration {
 
     @Bean
     public SquaredPetriDish configureDish() {

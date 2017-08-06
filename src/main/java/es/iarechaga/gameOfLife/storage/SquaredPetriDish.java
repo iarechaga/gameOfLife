@@ -1,6 +1,7 @@
 package es.iarechaga.gameOfLife.storage;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,6 +25,10 @@ public class SquaredPetriDish {
 
         blocksRow.put(cellBlock.getY(), cellBlock);
         cellStorage.putIfAbsent(cellBlock.getX(), blocksRow);
+    }
+
+    public void addAll(final Collection<CellBlock> cellBlocks) {
+        cellBlocks.forEach(this::add);
     }
 
     public Integer getRange() {

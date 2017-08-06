@@ -44,25 +44,25 @@ public class SquaredPetriDishTest {
 
     @Test(expected = BlockOutOfLimitsException.class)
     public void shouldThrowExceptionWhenTryingToIncludeInWrongHorizontalPosition() {
-        CellBlock cellBlock = new CellBlock(100, 2, new Cell());
+        CellBlock cellBlock = new CellBlock(101, 2, new Cell());
         squaredPetriDish.add(cellBlock);
     }
 
     @Test(expected = BlockOutOfLimitsException.class)
     public void shouldThrowExceptionWhenTryingToIncludeInWrongNegativeHorizontalPosition() {
-        CellBlock cellBlock = new CellBlock(-100, 2, new Cell());
+        CellBlock cellBlock = new CellBlock(-101, 2, new Cell());
         squaredPetriDish.add(cellBlock);
     }
 
     @Test(expected = BlockOutOfLimitsException.class)
     public void shouldThrowExceptionWhenTryingToIncludeInWrongVerticalPosition() {
-        CellBlock cellBlock = new CellBlock(2, 100, new Cell());
+        CellBlock cellBlock = new CellBlock(2, 101, new Cell());
         squaredPetriDish.add(cellBlock);
     }
 
     @Test(expected = BlockOutOfLimitsException.class)
     public void shouldThrowExceptionWhenTryingToIncludeInWrongNegativeVerticalPosition() {
-        CellBlock cellBlock = new CellBlock(2, -100, new Cell());
+        CellBlock cellBlock = new CellBlock(2, -101, new Cell());
         squaredPetriDish.add(cellBlock);
     }
 

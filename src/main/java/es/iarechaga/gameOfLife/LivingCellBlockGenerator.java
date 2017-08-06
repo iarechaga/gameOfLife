@@ -26,7 +26,7 @@ public class LivingCellBlockGenerator {
         return blocks;
     }
 
-    List<CellBlock> smallExploder(final Integer range) {
+    public List<CellBlock> smallExploder(final Integer range) {
         List<CellBlock> blocks = new ArrayList<>();
 
         int randomRow = ThreadLocalRandom.current().nextInt(3, range - 3);

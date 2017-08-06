@@ -21,13 +21,19 @@ public class EmptyBlockGameRulesTest {
     }
 
     @Test
-    public void shouldBecomePopulatedWithEnoughNeighbours() {
-        IntStream fewNeighbours = IntStream.range(3, 10);
+    public void shouldRemainEmptyWithTooManyNeighbours() {
+        IntStream fewNeighbours = IntStream.range(4, 10);
 
         assertTrue(
-                fewNeighbours.allMatch(
+                fewNeighbours.noneMatch(
                         neighboursAmount -> gameRules.shouldPopulate(neighboursAmount)
                 )
         );
+    }
+
+    @Test
+    public void shouldBecomePopulatedWithThreeNeighbours() {
+
+        assertTrue(gameRules.shouldPopulate(3));
     }
 }

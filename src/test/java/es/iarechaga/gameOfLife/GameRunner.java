@@ -10,16 +10,16 @@ import javax.inject.Inject;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ConfigurationContext.class})
+@ContextConfiguration(classes = {ApplicationConfiguration.class})
 public class GameRunner {
 
     private static final double MAX_ITERATIONS = 20;
+    private static final int ONE_SECOND = 1000;
+
     @Inject
     private Game game;
-
     @Inject
     private ConsolePetriDishPrinter printer;
-
     @Inject
     private LivingCellBlockGenerator randomCellGenerator;
 
@@ -29,7 +29,7 @@ public class GameRunner {
 
         System.out.println("Initial state :");
         printer.print(game.getPetriDish());
-        for (int iteration = 0; iteration < MAX_ITERATIONS; iteration++) {
+        for (int iteration = 1; iteration <= MAX_ITERATIONS; iteration++) {
             blockExecution();
             System.out.println("Iteration " + iteration);
             game.nextGeneration();
@@ -39,14 +39,12 @@ public class GameRunner {
     }
 
     private void blockExecution() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(ONE_SECOND);
     }
 
     private void initGame() {
         List<CellBlock> cellsToAdd = randomCellGenerator.smallExploder(game.getPetriDish().getRange());
-        for (CellBlock cellBlock : cellsToAdd) {
-            game.getPetriDish().add(cellBlock);
-        }
+        game.getPetriDish().addAll(cellsToAdd);
     }
 
 }

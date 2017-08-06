@@ -54,7 +54,9 @@ public class EmptyBlockGenerationCalculatorTest {
 
         generationCalculator.evolve(petriDish);
 
-        verify(petriDish).add(eq(new CellBlock(DESIRED_X, DESIRED_Y, new Cell())));
+        List<CellBlock> desiredArray = new ArrayList<>();
+        desiredArray.add(new CellBlock(DESIRED_X, DESIRED_Y, new Cell()));
+        verify(petriDish).addAll(eq(desiredArray));
     }
 
     @Test
