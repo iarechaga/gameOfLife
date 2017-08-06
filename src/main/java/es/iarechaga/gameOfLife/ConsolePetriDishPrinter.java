@@ -3,10 +3,13 @@ package es.iarechaga.gameOfLife;
 import es.iarechaga.gameOfLife.storage.CellBlock;
 import es.iarechaga.gameOfLife.storage.SquaredPetriDish;
 
+import javax.inject.Named;
+
+@Named
 public class ConsolePetriDishPrinter {
 
-    private static final String LIVING_CELL_SYMBOL = "#";
-    private static final String EMPTY_CELL_SYMBOL = "O";
+    private static final String LIVING_CELL_SYMBOL = "▦";
+    private static final String EMPTY_CELL_SYMBOL = "□";
 
     public void print(SquaredPetriDish dish) {
         Integer range = dish.getRange();
@@ -19,6 +22,7 @@ public class ConsolePetriDishPrinter {
                 } else {
                     System.out.print(EMPTY_CELL_SYMBOL);
                 }
+                System.out.print(" ");
             }
             System.out.println();
         }

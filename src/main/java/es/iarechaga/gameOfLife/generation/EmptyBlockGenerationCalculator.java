@@ -5,6 +5,7 @@ import es.iarechaga.gameOfLife.rules.EmptyBlockGameRules;
 import es.iarechaga.gameOfLife.storage.CellBlock;
 import es.iarechaga.gameOfLife.storage.SquaredPetriDish;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
@@ -15,6 +16,7 @@ class EmptyBlockGenerationCalculator {
     private final NeighbourLivingCellsCounter counter;
     private final EmptyBlockRetriever emptyBlockRetriever;
 
+    @Inject
     public EmptyBlockGenerationCalculator(final EmptyBlockGameRules gameRules, final NeighbourLivingCellsCounter counter,
                                           final EmptyBlockRetriever emptyBlockRetriever) {
         this.gameRules = gameRules;
