@@ -4,33 +4,19 @@ import es.iarechaga.game.of.life.cell.Cell;
 import es.iarechaga.game.of.life.storage.CellBlock;
 
 import javax.inject.Named;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Named
 public class LivingCellBlockGenerator {
 
-    List<CellBlock> glider(final Integer range) {
-        List<CellBlock> blocks = new ArrayList<>();
-
-        int randomRow = ThreadLocalRandom.current().nextInt(3, range - 3);
-        int randomColumn = ThreadLocalRandom.current().nextInt(3, range - 3);
-
-        blocks.add(new CellBlock(randomRow - 1, randomColumn, new Cell()));
-        blocks.add(new CellBlock(randomRow, randomColumn + 1, new Cell()));
-        blocks.add(new CellBlock(randomRow + 1, randomColumn - 1, new Cell()));
-        blocks.add(new CellBlock(randomRow + 1, randomColumn, new Cell()));
-        blocks.add(new CellBlock(randomRow + 1, randomColumn + 1, new Cell()));
-
-        return blocks;
-    }
 
     public List<CellBlock> smallExploder(final Integer range) {
-        List<CellBlock> blocks = new ArrayList<>();
+        final List<CellBlock> blocks = new ArrayList<>();
 
-        int randomRow = ThreadLocalRandom.current().nextInt(3, range - 3);
-        int randomColumn = ThreadLocalRandom.current().nextInt(3, range - 3);
+        final int randomRow = getRandomValue(range);
+        final int randomColumn = getRandomValue(range);
 
         blocks.add(new CellBlock(randomRow - 1, randomColumn, new Cell()));
         blocks.add(new CellBlock(randomRow, randomColumn - 1, new Cell()));
@@ -41,5 +27,9 @@ public class LivingCellBlockGenerator {
         blocks.add(new CellBlock(randomRow + 2, randomColumn, new Cell()));
 
         return blocks;
+    }
+
+    private static int getRandomValue(Integer range) {
+        return new SecureRandom().nextInt() % range;
     }
 }

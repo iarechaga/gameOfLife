@@ -21,11 +21,11 @@ class OccupiedBlockGenerationCalculator {
     }
 
     void evolve(final SquaredPetriDish petriDish) {
-        List<CellBlock> livingCells = petriDish.getOccupiedCells();
+        final List<CellBlock> livingCells = petriDish.getOccupiedCells();
 
-        for (CellBlock cellBlock : livingCells) {
+        for (final CellBlock cellBlock : livingCells) {
             final List<CellBlock> neighbours = petriDish.getNeighbours(cellBlock);
-            Integer neighbourAmount = counter.count(neighbours);
+            final Integer neighbourAmount = counter.count(neighbours);
             if (cellGameRules.shouldDie(neighbourAmount)) {
                 cellBlock.kill();
             }

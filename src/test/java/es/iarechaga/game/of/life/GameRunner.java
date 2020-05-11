@@ -44,7 +44,7 @@ public class GameRunner {
 
     private void initGame() {
         List<CellBlock> cellsToAdd = randomCellGenerator.smallExploder(game.getPetriDish().getRange());
-        game.getPetriDish().addAll(cellsToAdd);
+        cellsToAdd.forEach(game.getPetriDish()::add);
     }
 
 }

@@ -2,7 +2,7 @@ package es.iarechaga.game.of.life.cell;
 
 import es.iarechaga.game.of.life.storage.InvalidUsageOfNullException;
 
-public class NullCell extends Cell {
+public final class NullCell extends Cell {
 
     private static final NullCell NULL_CELL = new NullCell();
 

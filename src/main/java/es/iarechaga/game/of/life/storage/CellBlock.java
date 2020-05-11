@@ -45,13 +45,13 @@ public class CellBlock {
 
     @Override
     public boolean equals(final Object obj) {
-        if (!(obj instanceof CellBlock)) {
+        if (obj == null || !obj.getClass().equals(this.getClass())) {
             return false;
         }
-        CellBlock that = (CellBlock) obj;
+        final CellBlock that = (CellBlock) obj;
         return this.getX().equals(that.getX())
-               && this.getY().equals(that.getY())
-               && this.containsCell().equals(that.containsCell());
+                && this.getY().equals(that.getY())
+                && this.containsCell().equals(that.containsCell());
     }
 
     @Override

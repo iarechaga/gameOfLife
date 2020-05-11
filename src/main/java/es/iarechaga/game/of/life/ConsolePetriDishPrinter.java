@@ -8,21 +8,21 @@ import javax.inject.Named;
 @Named
 public class ConsolePetriDishPrinter {
 
-    private static final String LIVING_CELL_SYMBOL = "▦";
-    private static final String EMPTY_CELL_SYMBOL = "□";
+    private static final char LIVING_CELL_SYMBOL = '▦';
+    private static final char EMPTY_CELL_SYMBOL = '□';
 
     public void print(SquaredPetriDish dish) {
-        Integer range = dish.getRange();
+        final Integer range = dish.getRange();
 
         for (int row = 0; row < range; row++) {
             for (int column = 0; column < range; column++) {
-                CellBlock cell = dish.getCell(row, column);
+                final CellBlock cell = dish.getCell(row, column);
                 if (cell.containsLivingCell()) {
                     System.out.print(LIVING_CELL_SYMBOL);
                 } else {
                     System.out.print(EMPTY_CELL_SYMBOL);
                 }
-                System.out.print(" ");
+                System.out.print(' ');
             }
             System.out.println();
         }

@@ -26,7 +26,8 @@ public class NextGenerationCalculatorIntegrationTest {
     @Test
     public void nextGenerationMiniExploder() {
         final SquaredPetriDish petriDish = new SquaredPetriDish(10);
-        petriDish.addAll(buildMiniExploder());
+
+        buildMiniExploder().forEach(petriDish::add);;
 
         nextGenerationCalculator.evolve(petriDish);
 

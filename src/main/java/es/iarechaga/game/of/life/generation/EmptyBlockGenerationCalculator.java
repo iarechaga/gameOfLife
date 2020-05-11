@@ -26,17 +26,17 @@ class EmptyBlockGenerationCalculator {
     }
 
     public void evolve(final SquaredPetriDish petriDish) {
-        List<CellBlock> occupiedCells = petriDish.getOccupiedCells();
-        List<CellBlock> generatedCells = new ArrayList<>();
+        final List<CellBlock> occupiedCells = petriDish.getOccupiedCells();
+        final List<CellBlock> generatedCells = new ArrayList<>();
         for (final CellBlock occupiedCell : occupiedCells) {
-            List<CellBlock> emptyNeighbours = emptyBlockRetriever.retrieve(occupiedCell, petriDish);
-            for (CellBlock emptyNeighbour : emptyNeighbours) {
-                Integer livingCellsAround = counter.count(petriDish.getNeighbours(emptyNeighbour));
+            final List<CellBlock> emptyNeighbours = emptyBlockRetriever.retrieve(occupiedCell, petriDish);
+            for (final CellBlock emptyNeighbour : emptyNeighbours) {
+                final Integer livingCellsAround = counter.count(petriDish.getNeighbours(emptyNeighbour));
                 if (gameRules.shouldPopulate(livingCellsAround)) {
                     generatedCells.add(new CellBlock(emptyNeighbour.getX(), emptyNeighbour.getY(), new Cell()));
                 }
             }
         }
-        petriDish.addAll(generatedCells);
+        generatedCells.forEach(petriDish::add);
     }
 }

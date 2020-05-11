@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "es.iarechaga.game.of.life")
 public class ApplicationConfiguration {
 
+    private static final int PETRI_DISH_SIZE = 20;
+
     @Bean
     public SquaredPetriDish configureDish() {
-        return new SquaredPetriDish(20);
+        return new SquaredPetriDish(PETRI_DISH_SIZE);
     }
 }

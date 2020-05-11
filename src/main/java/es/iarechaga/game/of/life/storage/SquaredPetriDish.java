@@ -1,7 +1,6 @@
 package es.iarechaga.game.of.life.storage;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,34 +26,28 @@ public class SquaredPetriDish {
         cellStorage.putIfAbsent(cellBlock.getX(), blocksRow);
     }
 
-    public void addAll(final Collection<CellBlock> cellBlocks) {
-        cellBlocks.forEach(this::add);
-    }
-
     public Integer getRange() {
         return size;
     }
 
     public CellBlock getCell(final int row, final int column) {
         return cellStorage.getOrDefault(row, new TreeMap<>())
-                          .getOrDefault(column, new CellBlock(row, column));
+                .getOrDefault(column, new CellBlock(row, column));
     }
 
     public void cleanDeadCells() {
-        List<CellBlock> deadCells = retrieveDeadCells();
-        deadCells.forEach(cell -> removeCellBlock(cell.getX(), cell.getY()));
+        this.getOccupiedCells()
+                .stream()
+                .filter(cellBlock -> !cellBlock.containsLivingCell())
+                .forEach(cell -> cellStorage.get(cell.getX()).remove(cell.getY()));
     }
 
     public List<CellBlock> getOccupiedCells() {
-        List<CellBlock> deadCells = new ArrayList<>();
-        cellStorage.values()
-                   .forEach(
-                           column -> column.values()
-                                           .stream()
-                                           .filter(CellBlock::containsCell)
-                                           .forEach(deadCells::add)
-                   );
-        return deadCells;
+        return cellStorage.values()
+                .stream()
+                .flatMap(integerCellBlockMap -> integerCellBlockMap.values().stream())
+                .filter(CellBlock::containsCell)
+                .collect(Collectors.toList());
     }
 
     public List<CellBlock> getNeighbours(final CellBlock cellBlock) {
@@ -72,21 +65,11 @@ public class SquaredPetriDish {
     }
 
     private Set<Integer> calculateRangePossibilities(final Integer index) {
-        final int start = index - 1 >= 0 ? index - 1 : 0;
+        final int start = Math.max(index - 1, 0);
         final int finish = index + 1 >= size ? size : index + 1;
         return IntStream.range(start, finish + 1).boxed().collect(Collectors.toSet());
     }
 
-    private void removeCellBlock(final Integer x, final Integer y) {
-        cellStorage.get(x).remove(y);
-    }
-
-    private List<CellBlock> retrieveDeadCells() {
-        return this.getOccupiedCells()
-                   .stream()
-                   .filter(cellBlock -> !cellBlock.containsLivingCell())
-                   .collect(Collectors.toList());
-    }
 
     private boolean outOfBounds(final CellBlock cellBlock) {
         return outOfBounds(cellBlock.getX()) || outOfBounds(cellBlock.getY());
