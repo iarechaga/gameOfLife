@@ -13,16 +13,12 @@ jobs:
 
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "pom.xml" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: mvn install
-
+      - run:
+          name: Compile Project With Tests
+          command: mvn install
       - save_cache:
           paths:
             - ~/.m2
@@ -37,10 +33,16 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "pom.xml" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: mvn sonar:sonar -Dsonar.login=$SONAR_USERNAME -Dsonar.password=$SONAR_PASSWORD -Dsonar.host.url=$SONAR_SERVER
+      - run:
+          name: Prepare for Analysis
+          command: mvn install
+      - run:
+          name: Execute Sonar Analysis
+          command: mvn sonar:sonar -Dsonar.login=$SONAR_USERNAME -Dsonar.password=$SONAR_PASSWORD -Dsonar.host.url=$SONAR_SERVER
+      - save_cache: #We want to also cache Sonar plugin dependencies
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
 
 workflows:
   version: 2.1
