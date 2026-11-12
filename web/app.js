@@ -48,6 +48,18 @@
   function switchTab(targetId) {
     tabButtons.forEach((b) => b.classList.toggle('active', b.dataset.tab === targetId));
     viewSections.forEach((s) => s.classList.toggle('active', s.id === `view-${targetId}`));
+
+    if (targetId === 'guide' || targetId === 'dojo') {
+      const isFileProto = window.location.protocol === 'file:';
+      const warnEl = document.getElementById(`file-protocol-warning-${targetId}`);
+      const frameEl = document.getElementById(`iframe-${targetId}`);
+      if (isFileProto) {
+        if (warnEl) warnEl.hidden = false;
+        if (frameEl) frameEl.style.display = 'none';
+      } else if (frameEl && !frameEl.getAttribute('src')) {
+        frameEl.setAttribute('src', `/academy/index.html?view=${targetId}&embed=1`);
+      }
+    }
   }
 
   tabButtons.forEach((btn) => {
@@ -583,4 +595,9 @@
   loadPreset('smallExploder');
   renderCheatSheet();
   renderQuiz();
+
+  const initialTab = new URLSearchParams(window.location.search).get('tab');
+  if (initialTab && ['comparator', 'simulator', 'cheatsheet', 'quiz', 'guide', 'dojo'].includes(initialTab)) {
+    switchTab(initialTab);
+  }
 })();

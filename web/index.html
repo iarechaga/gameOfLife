@@ -22,10 +22,12 @@
         </div>
 
         <nav class="main-tabs" aria-label="Vistas principales">
-          <button class="tab-btn active" data-tab="comparator">1. Comparador de Código (4 variantes)</button>
-          <button class="tab-btn" data-tab="simulator">2. Simulador Rayos X (3 fases)</button>
+          <button class="tab-btn active" data-tab="comparator">1. Comparador (4 variantes)</button>
+          <button class="tab-btn" data-tab="simulator">2. Simulador Rayos X</button>
           <button class="tab-btn" data-tab="cheatsheet">3. Chuleta Mental</button>
           <button class="tab-btn" data-tab="quiz">4. Autoevaluación</button>
+          <button class="tab-btn" data-tab="guide">5. Guía Senior Java → TS+React</button>
+          <button class="tab-btn tab-btn-dojo" data-tab="dojo">6. 🥋 Dojo de Katas en Vivo</button>
         </nav>
 
         <div class="lang-pills">
@@ -228,6 +230,33 @@
             <button id="quiz-next" class="btn btn-primary">Siguiente pregunta →</button>
           </div>
         </div>
+      </section>
+
+      <!-- VIEW 5 & 6: EMBEDDED REACT 19 + TYPESCRIPT ACADEMY & LIVE KATA DOJO -->
+      <section id="view-guide" class="view-section academy-frame-section">
+        <div id="file-protocol-warning-guide" class="file-protocol-warning" hidden>
+          Para cargar el motor interactivo de React 19 + compilador TypeScript en navegador, abre esta
+          web mediante el servidor local: <code>node web/server.mjs</code> →
+          <a href="http://localhost:3030/?tab=guide">http://localhost:3030/?tab=guide</a>
+        </div>
+        <iframe
+          id="iframe-guide"
+          class="academy-iframe"
+          title="Guía Paso a Paso Senior Java a TypeScript + React"
+        ></iframe>
+      </section>
+
+      <section id="view-dojo" class="view-section academy-frame-section">
+        <div id="file-protocol-warning-dojo" class="file-protocol-warning" hidden>
+          Para ejecutar el compilador TypeScript (`tsc --strict`) y los tests React 19 en vivo, abre:
+          <code>node web/server.mjs</code> →
+          <a href="http://localhost:3030/?tab=dojo">http://localhost:3030/?tab=dojo</a>
+        </div>
+        <iframe
+          id="iframe-dojo"
+          class="academy-iframe"
+          title="Dojo Interactivo de Katas TypeScript + React"
+        ></iframe>
       </section>
     </main>
 
