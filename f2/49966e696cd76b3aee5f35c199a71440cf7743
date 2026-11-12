@@ -1,0 +1,37 @@
+typescript-react/src/academy/guideData.ts
+  s_14e817442a70da::t_66d433328894dd 1-509
+typescript-react/src/dojo/DojoView.tsx
+  s_14e817442a70da::t_4f03afdbc8b765 1-430
+typescript-react/src/dojo/PreviewErrorBoundary.tsx
+  s_14e817442a70da::t_40de018ca5c22f 1-40
+typescript-react/src/dojo/testHarness.ts
+  s_14e817442a70da::t_56f995878c82be 1-119
+typescript-react/src/dojo/tsBrowserCompiler.ts
+  s_14e817442a70da::t_7504ed1ca9b000 1-278
+typescript-react/src/dojo/virtualLibs.ts
+  s_3a4697e89c7b79::t_6300b2775ff5b2 1-655
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "f249966e696cd76b3aee5f35c199a71440cf7743",
+  "prompts": {},
+  "sessions": {
+    "s_14e817442a70da": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_e401feaceffeXg1gPDsORHUIe7",
+        "model": "gemini-4-carbon"
+      },
+      "human_author": "Iñaki Arechaga Fernandez <iarechaga@gmail.com>"
+    },
+    "s_3a4697e89c7b79": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_e2f5f3e33ffejvvd6ooF6RaoV4",
+        "model": "gemini-4-carbon"
+      },
+      "human_author": "Iñaki Arechaga Fernandez <iarechaga@gmail.com>"
+    }
+  }
+}
