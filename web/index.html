@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game of Life — Laboratorio Comparativo (Java · TS · TS+React · Go)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top-header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <span></span><span class="lit"></span><span></span>
+            <span class="lit"></span><span class="lit"></span><span class="lit"></span>
+            <span class="lit"></span><span></span><span class="lit"></span>
+          </div>
+          <div>
+            <h1>Game of Life · Polyglot Lab</h1>
+            <p>Aprende TypeScript, React y Golang a partir de tu propio diseño en Java</p>
+          </div>
+        </div>
+
+        <nav class="main-tabs" aria-label="Vistas principales">
+          <button class="tab-btn active" data-tab="comparator">1. Comparador de Código (4 variantes)</button>
+          <button class="tab-btn" data-tab="simulator">2. Simulador Rayos X (3 fases)</button>
+          <button class="tab-btn" data-tab="cheatsheet">3. Chuleta Mental</button>
+          <button class="tab-btn" data-tab="quiz">4. Autoevaluación</button>
+        </nav>
+
+        <div class="lang-pills">
+          <span class="pill pill-java">Java 11</span>
+          <span class="pill pill-ts">TypeScript</span>
+          <span class="pill pill-react">TS + React</span>
+          <span class="pill pill-go">Golang</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- VIEW 1: 4-VARIANT CODE COMPARATOR -->
+      <section id="view-comparator" class="view-section active">
+        <div class="explorer-layout">
+          <aside class="module-sidebar">
+            <div class="sidebar-title">Capas de tu arquitectura</div>
+            <div id="module-list" class="module-list"></div>
+          </aside>
+
+          <div class="module-content">
+            <div class="module-header-card">
+              <div class="module-header-top">
+                <div>
+                  <h2 id="module-title"></h2>
+                  <p id="module-summary" class="module-summary"></p>
+                </div>
+
+                <div class="lang-filter-bar">
+                  <span class="lang-filter-label">Comparar:</span>
+                  <button class="lang-toggle active" data-lang="java">Java</button>
+                  <button class="lang-toggle active" data-lang="ts">TypeScript</button>
+                  <button class="lang-toggle active" data-lang="react">TS + React</button>
+                  <button class="lang-toggle active" data-lang="go">Golang</button>
+                </div>
+              </div>
+
+              <div id="insights-grid" class="insights-grid"></div>
+            </div>
+
+            <div id="code-columns" class="code-columns"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: X-RAY 3-PHASE SIMULATOR -->
+      <section id="view-simulator" class="view-section">
+        <div class="sim-layout">
+          <div class="dish-card">
+            <div class="dish-toolbar">
+              <div class="btn-group">
+                <button id="btn-play" class="btn btn-primary">▶ Auto-Play</button>
+                <button id="btn-next-gen" class="btn">⏭ Gen Completa</button>
+                <button id="btn-xray" class="btn btn-xray" title="Avanza sub-fase por sub-fase para ver cómo funciona tu algoritmo por dentro">
+                  🔬 Paso Rayos X (Sub-fase)
+                </button>
+              </div>
+
+              <div class="btn-group">
+                <select id="preset-select" class="select-input" aria-label="Patrón inicial">
+                  <option value="smallExploder">Small Exploder (Tu patrón)</option>
+                  <option value="glider">Glider</option>
+                  <option value="blinker">Blinker</option>
+                  <option value="beacon">Beacon</option>
+                  <option value="empty">Tablero vacío (Dibujar)</option>
+                </select>
+                <button id="btn-reset-preset" class="btn">Reiniciar</button>
+              </div>
+            </div>
+
+            <div id="petri-grid" class="petri-grid"></div>
+
+            <div class="dish-legend">
+              <span class="legend-item">
+                <span class="legend-swatch" style="background: var(--alive-color)"></span>
+                Viva (<code>alive() == true</code>)
+              </span>
+              <span class="legend-item">
+                <span class="legend-swatch" style="background: var(--dying-color)"></span>
+                Muerta en Fase 1 (sigue en <code>cellStorage</code>)
+              </span>
+              <span class="legend-item">
+                <span class="legend-swatch" style="background: rgba(250, 204, 21, 0.45)"></span>
+                Hueco vecino evaluado en Fase 2
+              </span>
+              <span class="legend-item">
+                <span class="legend-swatch" style="background: var(--born-color)"></span>
+                Nacida en Fase 2 (<code>neighbours == 3</code>)
+              </span>
+            </div>
+          </div>
+
+          <div class="sim-inspector">
+            <div class="inspector-card">
+              <h3>Estado de Ejecución</h3>
+              <div class="stats-row">
+                <div class="stat-box">
+                  <div id="stat-gen" class="stat-val">0</div>
+                  <div class="stat-lbl">Generación</div>
+                </div>
+                <div class="stat-box">
+                  <div id="stat-living" class="stat-val" style="color: var(--alive-color)">0</div>
+                  <div class="stat-lbl">Células Vivas</div>
+                </div>
+                <div class="stat-box">
+                  <div id="stat-dead" class="stat-val" style="color: var(--dying-color)">0</div>
+                  <div class="stat-lbl">Muertas sin limpiar</div>
+                </div>
+                <div class="stat-box">
+                  <div id="stat-phase" class="stat-val" style="color: var(--born-color)">Listo</div>
+                  <div class="stat-lbl">Sub-fase actual</div>
+                </div>
+              </div>
+
+              <h3>Pipeline de <code>NextGenerationCalculator.evolve()</code></h3>
+              <div class="pipeline-steps">
+                <div class="pipeline-step" data-phase="1" data-jump="cellblock">
+                  <div class="pipeline-step-header">
+                    <span>Fase 1 · OccupiedBlockGenerationCalculator</span>
+                    <span class="jump-link">Ver código en los 4 →</span>
+                  </div>
+                  <p>
+                    Evalúa bloques ocupados y llama a <code>cellBlock.kill()</code> si vecinos &lt; 2 o &gt; 3.
+                    <strong>¡Ojo!</strong> Siguen teniendo <code>containsCell() == true</code> para no alterar el conteo simultáneo.
+                  </p>
+                </div>
+
+                <div class="pipeline-step" data-phase="2" data-jump="calculators">
+                  <div class="pipeline-step-header">
+                    <span>Fase 2 · EmptyBlockGenerationCalculator</span>
+                    <span class="jump-link">Ver código en los 4 →</span>
+                  </div>
+                  <p>
+                    <code>EmptyBlockRetriever</code> localiza vecinos vacíos alrededor de células ocupadas. Si tienen exactamente 3 vecinos ocupados, nacen al final de la fase.
+                  </p>
+                </div>
+
+                <div class="pipeline-step" data-phase="0" data-jump="petridish">
+                  <div class="pipeline-step-header">
+                    <span>Fase 3 · SquaredPetriDish.cleanDeadCells()</span>
+                    <span class="jump-link">Ver código en los 4 →</span>
+                  </div>
+                  <p>
+                    Elimina del mapa disperso todas las entradas donde <code>!containsLivingCell()</code>, dejando el plato listo para la siguiente generación.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="inspector-card">
+              <h3>
+                <span>Inspector en Vivo: <code>SquaredPetriDish.cellStorage</code></span>
+                <span style="font-size: 0.74rem; color: var(--text-muted); font-weight: 400">
+                  TreeMap / Map / map[int]map[int]
+                </span>
+              </h3>
+              <pre id="storage-dump" class="storage-dump"></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: CHEAT SHEET -->
+      <section id="view-cheatsheet" class="view-section">
+        <div class="cheatsheet-controls">
+          <input
+            id="cheat-search"
+            type="search"
+            class="search-input"
+            placeholder="Filtrar concepto (ej. null, interfaces, constructores, errores, async, inmutabilidad...)"
+          />
+        </div>
+
+        <div class="cheat-table-wrap">
+          <table class="cheat-table">
+            <thead>
+              <tr>
+                <th>Concepto</th>
+                <th style="color: var(--java-color)">Java 11</th>
+                <th style="color: var(--ts-color)">TypeScript (Node)</th>
+                <th style="color: var(--react-color)">TypeScript + React</th>
+                <th style="color: var(--go-color)">Golang</th>
+              </tr>
+            </thead>
+            <tbody id="cheat-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- VIEW 4: SELF-TEST QUIZ -->
+      <section id="view-quiz" class="view-section">
+        <div class="quiz-container">
+          <div id="quiz-progress" class="quiz-progress"></div>
+          <h2 id="quiz-question" class="quiz-question"></h2>
+          <pre id="quiz-code" class="quiz-code"></pre>
+          <div id="quiz-options" class="quiz-options"></div>
+          <div id="quiz-feedback" class="quiz-feedback"></div>
+          <div class="quiz-footer">
+            <strong id="quiz-score" style="font-family: var(--font-mono); font-size: 0.9rem"></strong>
+            <button id="quiz-next" class="btn btn-primary">Siguiente pregunta →</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
