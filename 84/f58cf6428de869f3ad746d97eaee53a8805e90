@@ -1,0 +1,21 @@
+typescript-react/package-lock.json
+  s_7014c11aed357a::t_098ed8f47473ef 1-1863
+typescript/package-lock.json
+  s_7014c11aed357a::t_48c7b37cef3a73 1-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "84f58cf6428de869f3ad746d97eaee53a8805e90",
+  "prompts": {},
+  "sessions": {
+    "s_7014c11aed357a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_e2f9cf82dffeksxvryU51AtWZ7",
+        "model": "gemini-4-carbon"
+      },
+      "human_author": "Iñaki Arechaga Fernandez <iarechaga@gmail.com>"
+    }
+  }
+}
